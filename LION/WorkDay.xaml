@@ -1,0 +1,71 @@
+﻿<Page x:Class="LION.WorkDay"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      Height="720"
+      Width="1280"
+      xmlns:local="clr-namespace:LION"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="1280"
+      Title="WorkDay">
+
+    <Grid Background="LightGray">
+        <TabControl x:Name="SelectedPage" SelectionChanged="SelectedPage_SelectionChanged">
+            <TabItem Header="Работа">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="155*"/>
+                        <ColumnDefinition Width="1119*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="labelCar" Content="Введите машину клиента" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                    <TextBox x:Name="nameCarTextBox" HorizontalAlignment="Left" Margin="8,14,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+                    <Button x:Name="enterCar" Click="enterCar_Click" Content="Ввести" HorizontalAlignment="Left" Margin="133,12,0,0" VerticalAlignment="Top" Width="51" Grid.Column="1"/>
+                    <Label x:Name="labelServices" Content="Выберите услугу" HorizontalAlignment="Left" Margin="13,75,0,0" VerticalAlignment="Top" Height="38" Width="145" Visibility="Hidden" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="servicesList" HorizontalAlignment="Left" Margin="10,81,0,0" VerticalAlignment="Top" Width="174" Height="32" Visibility="Hidden" Grid.Column="1"/>
+                    <Label x:Name="labelQuantity" Content="Выберите количество" HorizontalAlignment="Left" Margin="13,121,0,0" VerticalAlignment="Top" Height="38" Width="189" Visibility="Hidden" Grid.ColumnSpan="2"/>
+                    <ComboBox x:Name="cuantityServices" HorizontalAlignment="Left" Margin="52,123,0,0" VerticalAlignment="Top" Width="132" Height="32" Visibility="Hidden" Grid.Column="1"/>
+                    <Button x:Name="enterServices" Click="enterServices_Click" Content="Добавить" HorizontalAlignment="Left" Margin="13,166,0,0" VerticalAlignment="Top" Width="326" Height="72" Visibility="Hidden" Grid.ColumnSpan="2"/>
+                    <ScrollViewer Background="GhostWhite" Margin="262,10,10,200" Grid.Column="1">
+                        <StackPanel x:Name="listServicesForAdd" Orientation="Vertical" Background="GhostWhite">
+
+                        </StackPanel>
+                    </ScrollViewer>
+                    <Button x:Name="compliteCar" Content="Завершить" HorizontalAlignment="Left" Margin="13,499,0,0" VerticalAlignment="Top" Height="83" Width="326" Click="compliteCar_Click" IsEnabled="False" Grid.ColumnSpan="2"/>
+                    <Button x:Name="del" Click="del_Click" Content="Удалить" Width="349" Margin="262,531,508,110" IsEnabled="False" Grid.Column="1"/>
+                    <Button x:Name="clear" Click="clear_Click" Content="Очистить" HorizontalAlignment="Left" Margin="753,531,0,0" VerticalAlignment="Top" Height="51" Width="326" IsEnabled="False" Grid.Column="1"/>
+                    <Button x:Name="Print" Content="Печать чека" HorizontalAlignment="Left" Margin="511,615,0,0" VerticalAlignment="Top" Width="349" Click="Button_Click" Height="40" IsEnabled="False" Grid.Column="1"/>
+                    <Button x:Name="all" Content="Итого" HorizontalAlignment="Left" Margin="13,390,0,0" VerticalAlignment="Top" Height="83" Width="326" Click="all_Click" IsEnabled="False" Grid.ColumnSpan="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="История" >
+                <Grid Background="#FFE5E5E5">
+                    <ScrollViewer Background="GhostWhite" Width="780" HorizontalAlignment="Left">
+                        <StackPanel x:Name="historyStackPanel" Background="GhostWhite" Orientation="Vertical">
+
+                        </StackPanel>
+                    </ScrollViewer>
+                    <DatePicker x:Name="calendar" HorizontalAlignment="Left" Margin="891,28,0,0" VerticalAlignment="Top" Height="26" Width="205"  />
+                    <Button x:Name="dateButton" Click="dateButton_Click" Content="Выбрать дату" HorizontalAlignment="Left" Margin="891,74,0,0" VerticalAlignment="Top" Height="72" Width="205"/>
+                    <Button x:Name="dateTodayButton" Click="dateTodayButton_Click" Content="Сегодня" HorizontalAlignment="Left" Margin="891,167,0,0" VerticalAlignment="Top" Height="72" Width="205"/>
+                    <Button x:Name="dateYesterdayButton" Click="dateYesterdayButton_Click" Content="Вчера" HorizontalAlignment="Left" Margin="891,258,0,0" VerticalAlignment="Top" Height="72" Width="205"/>
+                    <Button x:Name="dateAllButton" Click="dateAllButton_Click" Content="За все время" HorizontalAlignment="Left" Margin="891,346,0,0" VerticalAlignment="Top" Height="72" Width="205"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Зарплата" Initialized="TabItem_Initialized" >
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="4*"></ColumnDefinition>
+                        <ColumnDefinition Width="6*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ScrollViewer Grid.Column="0" Background="GhostWhite">
+                        <StackPanel x:Name="salaryStackPanel"  Orientation="Vertical">
+
+                        </StackPanel>
+                    </ScrollViewer>
+                    <Button  x:Name="clearsalary" Grid.Column="1" Height="83" Width="326" Content="Выдать зарплату" Click="clearsalary_Click"></Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>
